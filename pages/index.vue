@@ -149,19 +149,19 @@
             </div>
             <div class="flex items-center justify-center space-x-2">
               <div class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center">
-                <img src="/images/espn.svg" alt="ESPN" class="w-6 h-6">
+                <img src="~/assets/images/espn.svg" alt="ESPN" class="w-6 h-6">
               </div>
               <span class="font-medium">ESPN</span>
             </div>
             <div class="flex items-center justify-center space-x-2">
               <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
-                <img src="/images/dailymotion.svg" alt="Dailymotion" class="w-6 h-6">
+                <img src="~/assets/images/dailymotion.svg" alt="Dailymotion" class="w-6 h-6">
               </div>
               <span class="font-medium">Dailymotion</span>
             </div>
             <div class="flex items-center justify-center space-x-2">
               <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                <img src="/images/nbc.svg" alt="NBC" class="w-6 h-6">
+                <img src="~/assets/images/nbc.svg" alt="NBC" class="w-6 h-6">
               </div>
               <span class="font-medium">NBC</span>
             </div>
