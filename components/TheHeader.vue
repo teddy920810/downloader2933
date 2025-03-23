@@ -2,7 +2,7 @@
   <header class="bg-white shadow fixed w-full top-0 z-50">
     <nav class="container mx-auto px-4 py-4">
       <div class="flex justify-between items-center">
-        <NuxtLink to="/" class="text-2xl font-bold text-red-600">Logo</NuxtLink>
+        <NuxtLink to="/" class="text-2xl font-bold text-red-600">Getvio</NuxtLink>
          
         <!-- 桌面端导航 -->
         <!--<div class="hidden md:flex space-x-8">

@@ -7,8 +7,8 @@
       <section class="bg-gradient-to-r from-red-50 to-red-100 py-20">
         <div class="container mx-auto px-4">
           <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl font-bold mb-6 whitespace-nowrap">Download YouTube Videos with One Click</h1>
-            <p class="text-xl text-gray-600 mb-8">Download your favorite YouTube videos anytime, anywhere, with multiple resolution and format options</p>
+            <h1 class="text-4xl font-bold mb-6 whitespace-nowrap">Free Video Downloader Online</h1>
+            <p class="text-xl text-gray-600 mb-8">One-click to download videos from 1000+ websites for offline use or watch and convert to MP3 or MP4 based on your needs directly online.</p>
             <div class="flex justify-center space-x-4">
               <el-input
                 v-model="videoUrl"
@@ -24,53 +24,150 @@
             <div v-if="downloadOptions.length > 0" class="mt-8">
               <h3 class="text-xl font-semibold mb-4">Select Download Option</h3>
               
-              <!-- 视频含音频资源 -->
-              <div v-if="videoWithAudioOptions.length > 0" class="mb-8">
-                <h4 class="text-lg font-medium mb-4">Video with Audio</h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div v-for="option in videoWithAudioOptions" :key="option.url" class="bg-white p-4 rounded-lg shadow">
-                    <p class="font-semibold mb-2">{{ option.quality }}</p>
-                    <p class="text-sm text-gray-600 mb-4">{{ option.format }}</p>
-                    <el-button type="danger" size="small" @click="downloadVideo(option.url)">
-                      Download
-                    </el-button>
+              <div class="flex gap-8">
+                <!-- 左侧视频信息 -->
+                <div class="w-1/3">
+                  <div class="bg-white p-4 rounded-lg shadow">
+                    <img :src="videoInfo.thumbnail" :alt="videoInfo.title" class="w-full rounded-lg mb-4">
+                    <h4 class="text-lg font-medium line-clamp-2">{{ videoInfo.title }}</h4>
+                  </div>
+                </div>
+
+                <!-- 右侧下载选项 -->
+                <div class="w-2/3">
+                  <!-- 视频含音频资源 -->
+                  <div v-if="videoWithAudioOptions.length > 0" class="mb-8">
+                    <h4 class="text-lg font-medium mb-4">Video & Audio</h4>
+                    <el-table :data="videoWithAudioOptions" stripe class="w-full">
+                      <el-table-column label="Quality" prop="quality" />
+                      <el-table-column label="Format" prop="format" />
+                      <el-table-column label="Download" width="120">
+                        <template #default="{ row }">
+                          <el-button type="danger" size="small" @click="downloadVideo(row.url)">
+                            Download
+                          </el-button>
+                        </template>
+                      </el-table-column>
+                    </el-table>
+                  </div>
+
+                  <!-- 仅视频资源 -->
+                  <div v-if="videoOnlyOptions.length > 0" class="mb-8">
+                    <h4 class="text-lg font-medium mb-4">Video Only</h4>
+                    <el-table :data="videoOnlyOptions" stripe class="w-full">
+                      <el-table-column label="Quality" prop="quality" />
+                      <el-table-column label="Format" prop="format" />
+                      <el-table-column label="Download" width="120">
+                        <template #default="{ row }">
+                          <el-button type="danger" size="small" @click="downloadVideo(row.url)">
+                            Download
+                          </el-button>
+                        </template>
+                      </el-table-column>
+                    </el-table>
+                  </div>
+
+                  <!-- 仅音频资源 -->
+                  <div v-if="audioOptions.length > 0" class="mb-8">
+                    <h4 class="text-lg font-medium mb-4">Audio Only</h4>
+                    <el-table :data="audioOptions" stripe class="w-full">
+                      <el-table-column label="Quality" prop="quality" />
+                      <el-table-column label="Format" prop="format" />
+                      <el-table-column label="Download" width="120">
+                        <template #default="{ row }">
+                          <el-button type="danger" size="small" @click="downloadVideo(row.url)">
+                            Download
+                          </el-button>
+                        </template>
+                      </el-table-column>
+                    </el-table>
                   </div>
                 </div>
               </div>
-
-               <!-- 视频资源 -->
-               <div v-if="videoOnlyOptions.length > 0" class="mb-8">
-                <h4 class="text-lg font-medium mb-4">Video Only</h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div v-for="option in videoOnlyOptions" :key="option.url" class="bg-white p-4 rounded-lg shadow">
-                    <p class="font-semibold mb-2">{{ option.quality }}</p>
-                    <p class="text-sm text-gray-600 mb-4">{{ option.format }}</p>
-                    <el-button type="danger" size="small" @click="downloadVideo(option.url)">
-                      Download
-                    </el-button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 音频资源 -->
-              <div v-if="audioOptions.length > 0" class="mb-8">
-                <h4 class="text-lg font-medium mb-4">Audio Only</h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div v-for="option in audioOptions" :key="option.url" class="bg-white p-4 rounded-lg shadow">
-                    <p class="font-semibold mb-2">{{ option.quality }}</p>
-                    <p class="text-sm text-gray-600 mb-4">{{ option.format }}</p>
-                    <el-button type="danger" size="small" @click="downloadVideo(option.url)">
-                      Download
-                    </el-button>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
         </div>
       </section>
+      <section>
+        <div class="container mx-auto px-4 py-20">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4">getvio.online Free Video Download Online</h2>
+            <p class="text-2xl">
+              Supports Downloading Videos from 
+              <span class="text-blue-500">1000+</span>
+              <span class="text-blue-500">Websites Like:</span>
+            </p>
+          </div>
+          
+          <!-- 第一行网站 -->
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+            <div class="flex items-center justify-center space-x-2">
+              <div class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center">
+                <i class="fab fa-youtube text-white text-2xl"></i>
+              </div>
+              <span class="font-medium">YouTube</span>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+              <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
+                <i class="fab fa-facebook text-white text-2xl"></i>
+              </div>
+              <span class="font-medium">Facebook</span>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+              <div class="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center">
+                <i class="fab fa-twitter text-white text-2xl"></i>
+              </div>
+              <span class="font-medium">Twitter</span>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                <i class="fab fa-instagram text-white text-2xl"></i>
+              </div>
+              <span class="font-medium">Instagram</span>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+              <div class="w-10 h-10 rounded-full bg-black flex items-center justify-center">
+                <i class="fab fa-tiktok text-white text-2xl"></i>
+              </div>
+              <span class="font-medium">TikTok</span>
+            </div>
+          </div>
 
+          <!-- 第二行网站 -->
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+            <div class="flex items-center justify-center space-x-2">
+              <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+                <i class="fab fa-soundcloud text-white text-2xl"></i>
+              </div>
+              <span class="font-medium">SoundCloud</span>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+              <div class="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center">
+                <i class="fab fa-vimeo-v text-white text-2xl"></i>
+              </div>
+              <span class="font-medium">Vimeo</span>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+              <div class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center">
+                <img src="/images/espn.svg" alt="ESPN" class="w-6 h-6">
+              </div>
+              <span class="font-medium">ESPN</span>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+              <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
+                <img src="/images/dailymotion.svg" alt="Dailymotion" class="w-6 h-6">
+              </div>
+              <span class="font-medium">Dailymotion</span>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                <img src="/images/nbc.svg" alt="NBC" class="w-6 h-6">
+              </div>
+              <span class="font-medium">NBC</span>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- 特性介绍 -->
       <section class="py-20">
         <div class="container mx-auto px-4">
@@ -107,6 +204,10 @@ const downloadOptions = ref([])
 const videoWithAudioOptions = ref([])
 const audioOptions = ref([])
 const videoOnlyOptions = ref([])
+const videoInfo = ref({
+  thumbnail: '',
+  title: ''
+})
 
 // 获取用户IP地址
 const getUserIP = async () => {
@@ -143,6 +244,12 @@ const handleDownload = async () => {
     const data = await response.json()
 
     if (data.code === 0 && data.data.formats) {
+      // 保存视频信息
+      videoInfo.value = {
+        thumbnail: data.data.thumbnail,
+        title: data.data.title
+      }
+      
       // 先过滤掉无效的格式
       const validFormats = data.data.formats.filter(format => format.filesize > 0);
       
