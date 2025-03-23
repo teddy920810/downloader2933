@@ -11,11 +11,11 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: '我的 SEO 网站',
+      title: 'GetVio - Video Download & Processing Service',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: '这是一个优化的 SEO 网站' }
+        { name: 'description', content: 'GetVio provides professional video download and processing services. Download videos from various platforms and convert them to your desired format.' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
   robots: {
     UserAgent: '*',
     Allow: '/',
-    Sitemap: (req: { headers: { host: string } }) => `https://${req.headers.host}/sitemap.xml`
+    Sitemap: 'https://getvio.online/sitemap.xml'
   },
 
   compatibilityDate: '2025-03-23'
