@@ -31,7 +31,7 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    siteUrl: 'https://getvio.online',
+    hostname: 'https://getvio.online',
     gzip: true
   },
 
