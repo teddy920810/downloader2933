@@ -8,8 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxtjs/sitemap',
     '@nuxtjs/i18n',
-    'nuxt-icon',
-    'nuxt-simple-sitemap'
+    'nuxt-icon'
   ],
 
   i18n: {
