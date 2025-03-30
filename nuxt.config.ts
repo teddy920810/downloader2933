@@ -6,16 +6,26 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@element-plus/nuxt',
     '@nuxtjs/robots',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/i18n',
+    'nuxt-icon',
+    'nuxt-simple-sitemap'
   ],
+
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+    vueI18n: './i18n.config.ts'
+  },
 
   app: {
     head: {
-      title: 'GetVio - Video Download & Processing Service',
+      title: 'YouTube Video Downloader - Download HD Videos with One Click',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'GetVio provides professional video download and processing services. Download videos from various platforms and convert them to your desired format.' }
+        { name: 'description', content: 'Easily download YouTube videos with multiple resolution and format options, featuring AI transcription to make video content acquisition simpler.' },
+        { name: 'keywords', content: 'YouTube downloader, video download, AI transcription, video tools, online download' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -26,13 +36,20 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.API_BASE_URL || 'http://localhost:3000/api'
+      apiBase: process.env.API_BASE_URL || 'http://localhost:3000/api',
+      gtmId: 'GTM-5SS5W9HT'
     }
   },
 
   sitemap: {
     hostname: 'https://getvio.online',
-    gzip: true
+    gzip: true,
+    exclude: [
+      '/admin/**',
+      '/private/**',
+      '/login',
+      '/register'
+    ]
   },
 
   robots: {
