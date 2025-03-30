@@ -232,11 +232,6 @@ const handleDownload = async () => {
     return
   }
 
-  if (!videoUrl.value.includes('youtube.com') && !videoUrl.value.includes('youtu.be')) {
-    ElMessage.warning('Please enter a valid YouTube video link')
-    return
-  }
-
   isLoading.value = true
   try {
     const country = await getUserIP()
